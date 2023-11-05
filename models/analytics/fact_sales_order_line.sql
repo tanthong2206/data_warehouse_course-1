@@ -16,8 +16,8 @@ FROM fact_sales_order_line__source
 
 , fact_sales_order_line__cast_type AS (
   SELECT 
-    cast(order_line_id as integer) AS sales_order_line_key
-    ,cast(stock_item_id as integer) AS product_key
+    cast(sales_order_line_key as integer) AS sales_order_line_key
+    ,cast(product_key as integer) AS product_key
     ,cast(quantity as integer) AS quantity
     ,cast(unit_price as numeric) AS unit_price
     ,cast(quantity as integer) * cast(unit_price as numeric) AS gross_amount
