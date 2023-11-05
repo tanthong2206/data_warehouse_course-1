@@ -10,8 +10,16 @@ WITH dimp_product_source AS (
     ,brand AS brand_name
   FROM dimp_product_source
 )
+, dim_product_cast_type AS (
+  SELECT 
+    cast(product_key AS integer) AS product_key
+    ,cast(product_name AS string) AS product_name
+    ,cast(brand_name AS string) AS brand_name
+  FROM dim_product_rename_column
+)
+
 SELECT 
-   cast(product_key AS integer) AS product_key
-  ,cast(product_name AS string) AS product_name
-  ,cast(brand_name AS string) AS brand_name
-FROM dim_product_rename_column
+  product_key
+  ,product_name
+  ,brand_name
+FROM dim_product_cast_type
