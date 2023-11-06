@@ -8,7 +8,7 @@ WITH fact_sales_order__source AS (
 SELECT 
   order_id AS sales_order_key
   ,customer_id  AS customer_key
-FROM fact_sales_orders__source
+FROM fact_sales_order__source
 )
 
 , fact_sales_order__cast_type AS (
