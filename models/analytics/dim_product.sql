@@ -1,4 +1,4 @@
-WITH dimp_product__source AS (
+WITH dim_product__source AS (
   SELECT 
     *
   FROM `vit-lam-data.wide_world_importers.warehouse__stock_items`
@@ -9,7 +9,7 @@ WITH dimp_product__source AS (
      stock_item_id AS product_key
     ,stock_item_name  AS product_name
     ,brand AS brand_name
-  FROM dimp_product_source
+  FROM dim_product_source
 )
 
 , dim_product__cast_type AS (
