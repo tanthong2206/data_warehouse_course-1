@@ -19,7 +19,7 @@ WITH dim_product__source AS (
     ,cast(product_name AS string) AS product_name
     ,cast(brand_name AS string) AS brand_name
     ,cast(supplier_key AS integer) AS supplier_key
-  FROM dim_product_rename_column
+  FROM dim_product__rename_column
 )
 
 SELECT 
