@@ -15,7 +15,7 @@ FROM fact_sales_order__source
   SELECT 
     cast(sales_order_key as integer) as sales_order_key
     ,cast(customer_key as integer) as customer_key
-  FROM fact_sales_orders__rename_column
+  FROM fact_sales_order__rename_column
 )
 SELECT
   sales_order_key
