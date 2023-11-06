@@ -10,7 +10,7 @@ WITH dim_product__source AS (
     ,stock_item_name  AS product_name
     ,brand AS brand_name
     ,supplier_id AS supplier_key
-  FROM dim_product_source
+  FROM dim_product__source
 )
 
 , dim_product__cast_type AS (
