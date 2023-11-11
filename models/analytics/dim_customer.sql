@@ -29,7 +29,7 @@ WITH dim_customer__source AS (
     *
     ,CASE 
       WHEN is_on_credit_hold_boolean IS TRUE THEN 'On Hold'
-      WHEN is_on_credit_hold_boolean IS FALES THEN 'Not On Hold'
+      WHEN is_on_credit_hold_boolean IS FALSE THEN 'Not On Hold'
       WHEN is_on_credit_hold_boolean IS NULL THEN 'Undefined'
     ELSE 'Invalid' END
     AS is_on_credit_hold
