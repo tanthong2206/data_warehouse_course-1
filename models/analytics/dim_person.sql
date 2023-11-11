@@ -18,6 +18,6 @@ FROM `vit-lam-data.wide_world_importers.application__people`
 )
 
 SELECT
-  persone_key
+  person_key
   ,full_name
 FROM dim_person__cast_type
