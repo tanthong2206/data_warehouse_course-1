@@ -37,6 +37,7 @@ SELECT
   ,fact_line.product_key
   ,COALESCE(fact_header.customer_key,-1) AS customer_key
   ,COALESCE(fact_header.picked_by_person_key,-1) AS picked_by_person_key
+  ,fact_header.order_date
   ,fact_line.quantity
   ,fact_line.unit_price
   ,fact_line.gross_amount
