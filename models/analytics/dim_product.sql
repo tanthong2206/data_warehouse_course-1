@@ -9,7 +9,10 @@ WITH dim_product__source AS (
      stock_item_id AS product_key
     ,stock_item_name  AS product_name
     ,brand AS brand_name
-    ,is_chiller_stock as is_chiller_stock
+    ,case 
+      when is_chiller_stock = 'False' then 'Chiller Stock'
+      else 'Not Chiller Stock'
+    end AS is_chiller_stock
     ,supplier_id AS supplier_key
   FROM dim_product__source
 )
@@ -19,7 +22,7 @@ WITH dim_product__source AS (
     cast(product_key AS integer) AS product_key
     ,cast(product_name AS string) AS product_name
     ,cast(brand_name AS string) AS brand_name
-    ,cast(is_chiller_stock as boolean) as is_chiller_stock
+    ,cast(is_chiller_stock as string) as is_chiller_stock
     ,cast(supplier_key AS integer) AS supplier_key
   FROM dim_product__rename_column
 )
