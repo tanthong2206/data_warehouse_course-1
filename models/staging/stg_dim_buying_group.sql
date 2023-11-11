@@ -18,7 +18,26 @@ WITH dim_buying_group__source AS (
   FROM dim_buying_group__rename_column
 )
 
+, dim_buying_group__add_undefined_record AS (
+  SELECT
+    COALESCE(buying_group_key,0) AS buying_group_key
+    ,buying_group_name
+  FROM dim_buying_group__cast_type
+
+  UNION ALL
+
+   SELECT
+    0 AS buying_group_key
+    , 'Undefiend' as buying_group_name
+  
+  UNION ALL
+
+   SELECT
+    -1 AS buying_group_key
+    , 'Invalid' as buying_group_name
+)
+
 SELECT
   buying_group_key
   , buying_group_name
-FROM dim_buying_group__cast_type
+FROM dim_buying_group__add_undefined_record
