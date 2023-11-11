@@ -29,6 +29,13 @@ FROM `vit-lam-data.wide_world_importers.application__people`
   0 AS person_key
   , 'Undefined' AS full_name
   FROM dim_person__cast_type
+
+  UNION ALL 
+
+  SELECT
+  -1 AS person_key
+  , 'Error/Invalid' AS full_name
+  FROM dim_person__cast_type
 )
 
 SELECT
