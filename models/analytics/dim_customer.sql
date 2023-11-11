@@ -41,10 +41,10 @@ SELECT
   dim_customer.customer_key
   ,dim_customer.customer_name
   ,dim_customer.customer_category_key
-  ,dim_customer_category.customer_category_name
+  ,COALESCE(dim_customer_category.customer_category_name,'Invalid') AS customer_category_name
   ,dim_customer.buying_group_key
   ,dim_customer.is_on_credit_hold
-  ,dim_buying_group.buying_group_name
+  ,COALESCE(dim_buying_group.buying_group_name,'Invalid') AS buying_group_name
 FROM dim_customer__convert_boolean AS dim_customer
 LEFT JOIN {{ref('stg_dim_customer_category')}} AS dim_customer_category 
   ON dim_customer.customer_category_key = dim_customer_category.customer_category_key
