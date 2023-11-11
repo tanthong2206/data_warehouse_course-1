@@ -28,7 +28,7 @@ WITH dim_customer_category__source AS (
 
    SELECT
     0 AS customer_category_key
-    , 'Undefiend' as customer_category_name
+    , 'Undefined' as customer_category_name
   
   UNION ALL
 

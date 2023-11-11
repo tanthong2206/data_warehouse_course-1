@@ -28,7 +28,7 @@ WITH dim_buying_group__source AS (
 
    SELECT
     0 AS buying_group_key
-    , 'Undefiend' as buying_group_name
+    , 'Undefined' as buying_group_name
   
   UNION ALL
 

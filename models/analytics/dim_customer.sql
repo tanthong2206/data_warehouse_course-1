@@ -49,8 +49,8 @@ WITH dim_customer__source AS (
 
    SELECT
     0 AS customer_key
-    , 'Undefiend' as customer_name
-    , 'Undefiend' as is_on_credit_hold
+    , 'Undefined' as customer_name
+    , 'Undefined' as is_on_credit_hold
     , 0 AS customer_category_key
     , 0 AS buying_group_key
 
