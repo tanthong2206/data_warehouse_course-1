@@ -41,8 +41,8 @@ WITH dim_customer__source AS (
    customer_key
    ,customer_name
    ,is_on_credit_hold
-   ,customer_category_key
-   ,buying_group_key
+   ,COALESCE(customer_category_key,0) AS customer_category_key
+   ,COALESCE(buying_group_key,0) AS buying_group_key
   FROM dim_customer__convert_boolean
 
    UNION ALL
@@ -55,7 +55,7 @@ WITH dim_customer__source AS (
     , 0 AS buying_group_key
 
    UNION ALL 
-   
+
     SELECT
     -1 AS customer_key
     , 'Invalid' as customer_name
