@@ -20,7 +20,7 @@ WITH dim_buying_group__source AS (
 
 , dim_buying_group__add_undefined_record AS (
   SELECT
-    COALESCE(buying_group_key,0) AS buying_group_key
+    buying_group_key
     ,buying_group_name
   FROM dim_buying_group__cast_type
 
