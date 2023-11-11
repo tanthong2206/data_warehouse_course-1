@@ -36,9 +36,10 @@ SELECT
   ,fact_line.sales_order_key
   ,fact_line.product_key
   ,fact_header.customer_key
+  ,fact_header.picked_by_person_key
   ,fact_line.quantity
   ,fact_line.unit_price
   ,fact_line.gross_amount
 FROM fact_sales_order_line__calculated_measure fact_line
-LEFT JOIN {{ ref('stg_fact_sales_order')}}fact_header
+LEFT JOIN {{ ref('stg_fact_sales_order')}} fact_header
   ON fact_line.sales_order_key = fact_header.sales_order_key
