@@ -35,13 +35,42 @@ WITH dim_product__source AS (
      AS is_chiller_stock
   FROM dim_product__cast_type
 )
+
+, dim_product__add_undefined_record AS (
+  SELECT
+    product_key
+    ,product_name
+    ,brand_name
+    ,is_chiller_stock
+    ,supplier_key
+  FROM dim_product__convert_boolean
+ 
+  UNION ALL 
+
+  SELECT
+  0 AS product_key
+  , 'Undefined' AS product_name
+  , 'Undefined' AS brand_name
+  , 'Undefined' AS is_chiller_stock
+  ,0 AS supplier_key
+
+  UNION ALL 
+
+  
+  SELECT
+  -1 AS product_key
+  , 'Invalid' AS product_name
+  , 'Invalid' AS brand_name
+  , 'Invalid' AS is_chiller_stock
+  ,-1 AS supplier_key
+)
 SELECT 
   dim_product.product_key
   ,dim_product.product_name
   ,COALESCE(dim_product.brand_name,'Undefined') AS brand_name
   ,dim_product.is_chiller_stock
   ,dim_product.supplier_key
-  ,COALESCE(dim_supplier.supplier_name,'Invalid') AS supplier_name 
-FROM dim_product__convert_boolean AS dim_product
+  ,COALESCE(dim_supplier.supplier_name,'Invalid') AS supplier_name --xu ly null left join khi data co trong bang product nhung bang supplier chua co
+FROM dim_product__add_undefined_record AS dim_product
 LEFT JOIN {{ref('dim_supplier')}} AS dim_supplier
   ON dim_product.supplier_key = dim_supplier.supplier_key

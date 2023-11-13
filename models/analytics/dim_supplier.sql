@@ -18,7 +18,26 @@ FROM `vit-lam-data.wide_world_importers.purchasing__suppliers`
   FROM dim_supplier__rename_column
 )
 
+, dim_supplier__add_undefined_record AS (
+  SELECT
+    supplier_key
+    ,supplier_name
+  FROM dim_supplier__cast_type
+ 
+  UNION ALL 
+
+  SELECT
+  0 AS supplier_key
+  , 'Undefined' supplier_name
+
+  UNION ALL 
+
+  
+  SELECT
+  -1 AS supplier_key
+  , 'Invalid' AS supplier_name
+)
 SELECT
   supplier_key
   ,supplier_name
-FROM dim_supplier__cast_type
+FROM dim_supplier__add_undefined_record
